@@ -159,7 +159,7 @@ cython_debug/
 .idea/
 
 # saved_model
-saved_model/
+saved_models/
 
 # caching python file
 **/__pycache__/
