@@ -1,9 +1,4 @@
 import torch
 
-
-_MODEL_LIST = [
-  ""
-]
-
-def get_model():
+def get_model(model_name):
   pass
