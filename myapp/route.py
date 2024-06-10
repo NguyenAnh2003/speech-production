@@ -1,5 +1,4 @@
 from fastapi import APIRouter, status, UploadFile, File
-from modules.model_modules import get_model
 
 router = APIRouter()  # init router
 
