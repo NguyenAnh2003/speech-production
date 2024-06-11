@@ -1,9 +1,13 @@
 app:
   # speech model
-  pretrained_section:
+  is_pretrained: False
+
+  pretrained_section: # (nemo, hf)
     model_name: ${}
-    is_pretrained: False
     use_nemo: False
+  # 
+  model_path: ??
+  
   processor:
     sample_rate: 16000
 
