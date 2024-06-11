@@ -6,3 +6,4 @@
 5. ll: [link](https://github.com/FourthBrain/FastAPI-for-Machine-Learning-Live-Demo/blob/main/ml.py)
 6. nvidia: [link](https://developer.nvidia.com/blog/building-a-machine-learning-microservice-with-fastapi/)
 7. github: [link](https://github.com/kurtispykes/car-evaluation-project)
+8. logger: [link](https://www.youtube.com/watch?v=jxmzY9soFXg)

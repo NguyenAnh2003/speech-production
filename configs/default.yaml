@@ -7,5 +7,10 @@ app:
   processor:
     sample_rate: 16000
 
+	# vocab
   vocab: []
-  
+
+	# logger
+  log:
+    dir: ??
+	file: ??
