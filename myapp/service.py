@@ -1,8 +1,7 @@
 from core.modules.model_modules import ModelModules
 from omegaconf import OmegaConf
-from core.modules.data_pipeline import DataPipeline
 
-conf = OmegaConf.load("../../configs/default.yaml")
+conf = OmegaConf.load("configs/default.yaml")
 model_module = ModelModules(conf=conf)
 
 

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from route import router
+from .route import router
 
 def init_app() -> FastAPI:
     # init fast api app
@@ -19,6 +19,6 @@ def init_app() -> FastAPI:
 
         # router
         app.include_router(router=router)
-
+        return app
     except Exception as e:
         raise ValueError(e.__cause__)
