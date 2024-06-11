@@ -4,7 +4,7 @@ import torch
 
 class DataPipeline:
     def __init__(self, processor) -> None:
-        super.__init__(processor=processor)
+        super.__init__()
         self.processor = processor
 
     def _load_audio_data(self, input):
