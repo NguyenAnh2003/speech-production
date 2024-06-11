@@ -5,6 +5,7 @@
 1. nvidia driver
 
 ## Dependecies
+install nemo_toolkit
 ```python
-install nemo_toolkit pip install git+https://github.com/NVIDIA/NeMo.git@main#egg=nemo_toolkit[all]
+pip install git+https://github.com/NVIDIA/NeMo.git@main#egg=nemo_toolkit[all]
 ```
