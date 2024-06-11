@@ -1,7 +1,7 @@
 app:
   is_pretrained: True
   pretrained_section: # (nemo, hf)
-    model_name: "nvidia/stt_en_conformer_ctc_large"
+    model_name: ???
     use_nemo: True
   processor:
     sample_rate: 16000

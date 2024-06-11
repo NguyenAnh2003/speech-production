@@ -8,7 +8,7 @@ class ModelModules:
     def __init__(self, conf: DictConfig) -> None:
         self.conf = OmegaConf.create(conf)
         self.model, self.processor = self.get_model_and_processor()
-
+        self.model_name = self.conf.app.pretrained_section.model_name = "nvidia/stt_en_conformer_ctc_large"
         self.data_pipeline = DataPipeline(
             processor=self.processor
         )  # get processor directly
@@ -39,7 +39,7 @@ class ModelModules:
         processor = None
         if self.conf.app.is_pretrained:
             model, processor = self._get_pretrained_model(
-                self.conf.app.pretrained_section.model_name,
+                self.model_name,
                 self.conf.app.pretrained_section.use_nemo,
             )
         else:
