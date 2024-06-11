@@ -32,18 +32,15 @@ class ModelModules:
         return model, processor
 
     def get_model(self):
-        try:
-            model = None
-            if self.conf.is_pretrained:
-                model, _ = self._get_pretrained_model(
-                    self.conf.pretrained_section.model_name,
-                    self.conf.pretrained_section.use_nemo,
-                )
-            else:
-                model = torch.load()
-            return model
-        except Exception as e:
-            raise ValueError(e)
+        model = None
+        if self.conf.is_pretrained:
+            model, _ = self._get_pretrained_model(
+                self.conf.pretrained_section.model_name,
+                self.conf.pretrained_section.use_nemo,
+            )
+        else:
+            model = torch.load()
+        return model
 
     def s2t_predict(self, input: torch.Tensor):
         processed_input = self.data_pipeline(input)
