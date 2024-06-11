@@ -168,3 +168,6 @@ saved_models/
 **/.ipynb_checkpoints
 
 **/.log
+
+# test folder
+test/
