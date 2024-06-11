@@ -53,7 +53,7 @@ class ModelModules:
         processed_input = None
         output = None
         if self.conf.pretrained_section.use_nemo == False:
-            # init
+            # using hf lib wil be init like this
             torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
             device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
