@@ -10,6 +10,7 @@ def index():
 
 # 
 @router.post("/s2t", status_code=status.HTTP_201_CREATED)
-def s2t_prediction(file: UploadFile = File(...)):
-    file_data = file.filename
-    return {"message": file_data}
+async def s2t_prediction(file: UploadFile = File(...)):
+    file_data = file.file
+    result = s2t_sevice(file_data)
+    return {"message": result}

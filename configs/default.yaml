@@ -1,9 +1,8 @@
 app:
   is_pretrained: True
   pretrained_section: # (nemo, hf)
-    model_name: ${}
-    use_nemo: False
-    model_path: ???
+    model_name: "nvidia/stt_en_conformer_ctc_large"
+    use_nemo: True
   processor:
     sample_rate: 16000
   vocab: []

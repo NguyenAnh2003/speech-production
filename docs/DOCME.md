@@ -7,3 +7,11 @@
 6. nvidia: [link](https://developer.nvidia.com/blog/building-a-machine-learning-microservice-with-fastapi/)
 7. github: [link](https://github.com/kurtispykes/car-evaluation-project)
 8. logger: [link](https://www.youtube.com/watch?v=jxmzY9soFXg)
+
+## System requirements
+1. nvidia driver
+
+## Dependecies
+```python
+install nemo toolkit pip install git+https://github.com/NVIDIA/NeMo.git@main#egg=nemo_toolkit[all]
+```
