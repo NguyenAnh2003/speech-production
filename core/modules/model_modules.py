@@ -13,13 +13,16 @@ class ModelModules:
             pass
 
     def get_model(self):
-        # is_pretained from config
-        model = None
-        if self.conf.is_pretained:
-            model = self._get_pretrained_model(
-                self.conf.pretrained_section.model_name,
-                self.conf.pretrained_section.use_nemo,
-            )
-        else:
-            model = torch.load()
-        return model
+        try:
+            # is_pretained from config
+            model = None
+            if self.conf.is_pretained:
+                model = self._get_pretrained_model(
+                    self.conf.pretrained_section.model_name,
+                    self.conf.pretrained_section.use_nemo,
+                )
+            else:
+                model = torch.load()
+            return model
+        except Exception as e:
+            raise ValueError(e)
