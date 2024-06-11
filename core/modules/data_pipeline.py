@@ -8,12 +8,12 @@ class DataPipeline:
         self.processor = processor
 
     def _load_audio_data(self, input):
-        audio_array, _ = torchaudio.load(input)
+        audio_array, rate = torchaudio.load(input)
+        audio_array = torchaudio.functional.resample(audio_array, orig_freq=rate, new_freq=16000)
         return audio_array
 
     def pipeline_s2t(self, input):
         try:
-            preprocessed_data = None  # preprocessed_data
             audio_array = self._load_audio_data(input=input)  # audio array
             audio_array = torch.mean(
                 audio_array, dim=0

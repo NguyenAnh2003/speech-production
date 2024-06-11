@@ -2,7 +2,7 @@ import torch
 from omegaconf import DictConfig
 from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq, pipeline
 from .data_pipeline import DataPipeline
-
+from nemo.collections.asr.models.ctc_bpe_models import EncDecCTCModelBPE
 
 class ModelModules:
     def __init__(self, conf: DictConfig) -> None:
@@ -22,7 +22,7 @@ class ModelModules:
         # if use nemo toolkit
         if use_nemo:
             # nemo pipeline
-            pass
+            model = EncDecCTCModelBPE.from_pretrained(model_name)
         else:
             model = AutoModelForSpeechSeq2Seq.from_pretrained(
                 model_name,
@@ -47,7 +47,6 @@ class ModelModules:
         return model, processor
 
     def s2t_predict(self, input: torch.Tensor):
-        processed_input = None
         output = None
         if self.conf.pretrained_section.use_nemo == False:
             # using hf lib wil be init like this
@@ -70,7 +69,10 @@ class ModelModules:
 
             output = pipe(processed_input)
 
-        elif self.conf.pretrained_section.use_nemo == False:
-            processed_input = self.data_pipeline(input)
-            output = self.model(processed_input)  # transcbie with nemo orelse
+        elif self.conf.pretrained_section.use_nemo == True:
+            processed_input = self.data_pipeline._load_audio_data(input)
+            output = self.model.transcribe(processed_input)  # transcbie with nemo orelse
+        else:
+            pass
+
         return output
