@@ -8,6 +8,7 @@ class ModelModules:
     def __init__(self, conf: DictConfig) -> None:
         self.conf = OmegaConf.create(conf)
         self.model, self.processor = self.get_model_and_processor()
+
         self.data_pipeline = DataPipeline(
             processor=self.processor
         )  # get processor directly
@@ -22,7 +23,6 @@ class ModelModules:
         if use_nemo:
             # nemo pipeline
             model = EncDecCTCModelBPE.from_pretrained(model_name)
-
         else:
             model = AutoModelForSpeechSeq2Seq.from_pretrained(
                 model_name,
@@ -32,6 +32,7 @@ class ModelModules:
             )
             processor = AutoProcessor.from_pretrained(model_name)
         model.cuda()
+
         return model, processor
 
     def get_model_and_processor(self):
@@ -74,5 +75,5 @@ class ModelModules:
             processed_input = processed_input.squeeze(0)
             output = self.model.transcribe(processed_input) # transcbie with nemo orelse
             output = output[0] # just with nemo
-            
+
         return output
