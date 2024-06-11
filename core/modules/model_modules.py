@@ -7,15 +7,10 @@ from .data_pipeline import DataPipeline
 class ModelModules:
     def __init__(self, conf: DictConfig) -> None:
         self.conf = conf
-        self.model = self.get_model()
-        self.processor = self.get_pretrained_processor()
+        self.model, self.processor = self.get_model_and_processor()
         self.data_pipeline = DataPipeline(
             processor=self.processor
         )  # get processor directly
-
-    def get_pretrained_processor(self):
-        _, processor = self._get_pretrained_model()
-        return processor
 
     @staticmethod
     def _get_pretrained_model(model_name: str, use_nemo: bool):
@@ -38,16 +33,18 @@ class ModelModules:
             processor = AutoProcessor.from_pretrained(model_name)
         return model, processor
 
-    def get_model(self):
+    def get_model_and_processor(self):
         model = None
+        processor = None
         if self.conf.is_pretrained:
-            model, _ = self._get_pretrained_model(
+            model, processor = self._get_pretrained_model(
                 self.conf.pretrained_section.model_name,
                 self.conf.pretrained_section.use_nemo,
             )
         else:
             model = torch.load()
-        return model
+
+        return model, processor
 
     def s2t_predict(self, input: torch.Tensor):
         processed_input = None
