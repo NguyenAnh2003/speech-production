@@ -1,0 +1,11 @@
+app:
+  # speech model
+  pretrained_section:
+    model_name: ${}
+    is_pretrained: False
+    use_nemo: False
+  processor:
+    sample_rate: 16000
+
+  vocab: []
+  

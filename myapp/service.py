@@ -1,8 +1,13 @@
-from modules.model_modules import get_model
+from core.modules.model_modules import ModelModules
+from omegaconf import OmegaConf
 
 
-model = get_model(is_pretrained=True) # init by dev
+conf = OmegaConf.load("../../configs/default.yaml")
+
+model_module = ModelModules(conf=conf)
+model = model_module.get_model()
 
 def s2t_sevice(file):
-  # init model
+  # init model - predict here
+  predict = model.translate() #?
   return file
