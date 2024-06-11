@@ -25,9 +25,6 @@ class ModelModules:
         if use_nemo:
             # nemo pipeline
             pass
-        else:
-            # hf pipeline
-            pass
 
         return model, processor
 
