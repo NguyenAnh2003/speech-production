@@ -1,7 +1,8 @@
 from core.modules.model_modules import ModelModules
 from omegaconf import OmegaConf
 
-conf = OmegaConf.load("configs/default.yaml")
+conf = OmegaConf.load("./configs/default.yaml")
+print(conf)
 model_module = ModelModules(conf=conf)
 
 
