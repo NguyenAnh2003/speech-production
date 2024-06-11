@@ -4,13 +4,12 @@ from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq, pipeline
 from .data_pipeline import DataPipeline
 from nemo.collections.asr.models.ctc_bpe_models import EncDecCTCModelBPE
 
+
 class ModelModules:
     def __init__(self, conf: DictConfig) -> None:
         self.conf = OmegaConf.create(conf)
         self.model, self.processor = self.get_model_and_processor()
-        self.data_pipeline = DataPipeline(
-            processor=self.processor
-        )  # get processor directly
+        self.data_pipeline = DataPipeline()
 
     @staticmethod
     def _get_pretrained_model(model_name: str, use_nemo: bool):
@@ -72,7 +71,9 @@ class ModelModules:
         elif self.conf.app.pretrained_section.use_nemo == True:
             processed_input = self.data_pipeline._load_audio_data(input)
             processed_input = processed_input.squeeze(0)
-            output = self.model.transcribe(processed_input) # transcbie with nemo orelse
-            output = output[0] # just with nemo
+            output = self.model.transcribe(
+                processed_input
+            )  # transcbie with nemo orelse
+            output = output[0]  # just with nemo
 
         return output
