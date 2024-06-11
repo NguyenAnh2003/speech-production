@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status, UploadFile, File
-# from .service import s2t_sevice
+from .service import s2t_sevice
 
 router = APIRouter()  # init router
 

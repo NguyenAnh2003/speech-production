@@ -1,20 +1,9 @@
 app:
-  # speech model
   is_pretrained: True
-
   pretrained_section: # (nemo, hf)
     model_name: ${}
     use_nemo: False
-  # 
-  model_path: ??
-
+    model_path: ???
   processor:
     sample_rate: 16000
-
-	# vocab
   vocab: []
-
-	# logger
-  log:
-    dir: ??
-	file: ??
